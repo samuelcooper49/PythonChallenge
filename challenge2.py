@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+
+import re
+
 text="""%%$@_$^__#)^)&!_+]!*@&^}@[@%]()%+$&[(_@%+%$*^@$^!+]!&_#)_*}{}}!}_]$[%}@[{_@#_^{*
 @##&{#&{&)*%(]{{([*}@[@&]+!!*{)!}{%+{))])[!^})+)$]#{*+^((@^@}$[**$&^{$!@#$%)!@(&
 +^!{%_$&@^!}$_${)$_#)!({@!)(^}!*^&!$%_&&}&_#&@{)]{+)%*{&*%*&@%$+]!*__(#!*){%&@++
@@ -1220,60 +1224,27 @@ $#_}*!(+([_&%{^&[([%]}*^{{([@+@]@*&@_!]_+([(#&!]]#$$#]@#{_]][_{@]{*))$({%}_![@$]
 #@}&$[[%]_&$+)$!%{(}$^$}*
 """
 
+# Loop over the text and count up occurences of each character
+
 d = {}
 for c in text:
     if c not in d:
         d[c] = 0
     d[c] += 1
 
-print(d)
+# Extract all chracters that occur only once
+
+rare_characters = ""
 for key, value in sorted(d.items(), key=lambda i: i[1]):
-    print('\n{}: {:04d}'.format(key, value))
-# print("% Occurs",text.count('%'),"time(s) in the text")
-# print("] Occurs",text.count(']'),"time(s) in the text")
-# print("[ Occurs",text.count('['),"time(s) in the text")
-# print("@ Occurs",text.count('@'),"time(s) in the text")
-# print("* Occurs",text.count('*'),"time(s) in the text")
-# print("& Occurs",text.count('&'),"time(s) in the text")
-# print("^ Occurs",text.count('^'),"time(s) in the text")
-# print("# Occurs",text.count('#'),"time(s) in the text")
-# print("+ Occurs",text.count('+'),"time(s) in the text")
-# print("$ Occurs",text.count('$'),"time(s) in the text")
-# print("{ Occurs",text.count('{'),"time(s) in the text")
-# print("} Occurs",text.count('}'),"time(s) in the text")
-# print("_ Occurs",text.count('_'),"time(s) in the text")
-# print("( Occurs",text.count('('),"time(s) in the text")
-# print(") Occurs",text.count(')'),"time(s) in the text")
-# print("! Occurs",text.count('!'),"time(s) in the text")
-# print(". Occurs",text.count('.'),"time(s) in the text")
-# print(", Occurs",text.count(','),"time(s) in the text")
-# print("y Occurs",text.count('y'),"time(s) in the text")
-# print("- Occurs",text.count('-'),"time(s) in the text")
-# print("= Occurs",text.count('='),"time(s) in the text")
-# print("a Occurs",text.count('a'),"time(s) in the text")
-# print("b Occurs",text.count('b'),"time(s) in the text")
-# print("c Occurs",text.count('c'),"time(s) in the text")
-# print("d Occurs",text.count('d'),"time(s) in the text")
-# print("e Occurs",text.count('e'),"time(s) in the text")
-# print("f Occurs",text.count('f'),"time(s) in the text")
-# print("g Occurs",text.count('g'),"time(s) in the text")
-# print("h Occurs",text.count('h'),"time(s) in the text")
-# print("i Occurs",text.count('i'),"time(s) in the text")
-# print("j Occurs",text.count('j'),"time(s) in the text")
-# print("k Occurs",text.count('k'),"time(s) in the text")
-# print("l Occurs",text.count('l'),"time(s) in the text")
-# print("m Occurs",text.count('m'),"time(s) in the text")
-# print("n Occurs",text.count('n'),"time(s) in the text")
-# print("g Occurs",text.count('g'),"time(s) in the text")
-# print("g Occurs",text.count('g'),"time(s) in the text")
-# print("g Occurs",text.count('g'),"time(s) in the text")
+    if value == 1:
+       rare_characters += key
 
+# Search original text for identified rare chracters, print them in the order that they appear
 
+print("".join(re.findall("["+rare_characters+"]", text)))
 
-
-
-
-
-
-
+# TODO:
+# * Break down into testable functions
+# * Add __main__ if statement
+# * Add unit tests
 
