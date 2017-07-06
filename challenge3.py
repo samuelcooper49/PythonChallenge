@@ -1253,6 +1253,20 @@ import re
 # print "".join(re.findall("[^A-Z]+[A-Z]{3}([a-z])[A-Z]{3}[^A-Z]+", text))
 
 def find_characters_friends(text):
+    """
+    Inputs:
+        text - string containing lines that start with an uppercase letter, then contain a pattern of AAAaAAA, e.g.
+        '''
+        AaBCDeFGHijk
+        LmNOPqRSTuvw
+        XyZABcDEFghi
+        '''
+    Outputs:
+       String - characters matching pattern in order they were found. E.g., for the above input:
+       'eqc'
+    Error:
+       Exception
+    """
     found_characters = re.findall("[^A-Z]+[A-Z]{3}([a-z])[A-Z]{3}[^A-Z]+", text)
     return "".join(found_characters)
 
